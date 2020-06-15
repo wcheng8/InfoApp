@@ -1,0 +1,70 @@
+.timetab{
+  color: black;
+  width: 100%;
+  height: 400px;
+  background-image: url("img/sunrise.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.greeting{
+  color: aliceblue;
+  font-weight: bolder;
+  font-size: 80px;
+  padding-top:100px;
+  padding-left:10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.time{
+  color: whitesmoke;
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.quote{
+  color: rgb(43, 43, 100);
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 20px;
+  padding-left: 10px;
+}
+.sunrisesunset{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  padding-left: 10px;
+}
+.sunrise{
+  padding-right: 50px;
+  color: rgb(43, 43, 100);
+}
+.sunset{
+  color: rgb(43, 43, 100);
+}
+
+.weathertab{
+  height: 150px;
+  background-color: rgb(248, 242, 122);
+}
+.weather0{
+  background-color: black;
+  height: 80%;
+  width: 10%;
+}
+.dailygenerator{
+  width: 100%;
+  height: 100px;
+  background-color:rgb(226, 226, 226);
+}
+
+.stocktab{
+  width: 100%;
+  height: 500px;
+  background-color: lightgray;
+}

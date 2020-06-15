@@ -22,12 +22,14 @@ async function DisplayWeatherData() {
     `http://api.openweathermap.org/data/2.5/forecast?q=${loc}&appid=${WEATHER_API_KEY}`
   );
   // console.log(weather_data);
-  // let sunrise = 0;
-  // let sunset = 0;
-  // sunrise = weather_data.data.sys.sunrise;
-  // sunset = weather_data.data.sys.sunset;
-  // console.log(new Date(sunrise));
-  // console.log(new Date(sunset));
+  let sunrise = new Date(weather_data.data.sys.sunrise * 1000);
+  let sunset = new Date(weather_data.data.sys.sunset * 1000);
+  console.log(
+    sunrise.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+  );
+  console.log(
+    sunset.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+  );
   console.log(
     `Currently it is ${
       weather_data.data.weather[0].description
