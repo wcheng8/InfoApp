@@ -7,6 +7,10 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 </head>
 <body>
   <div>
@@ -51,17 +55,11 @@
     </div>
     <div class="dailygenerator bg-light">
       <div class="row pl-5 mx-auto pt-3" >
-        <ul class="row col-4 Important">
-          <div class="btn btn-primary col-3 mx-auto">Item1</div>
-          <div class="btn btn-primary col-3 mx-auto">Item1</div>
+        <ul class="row col-4 mx-auto" id="Important">
         </ul>
-        <ul class="row col-4 Medium mx-auto">
-          <div class="btn btn-primary col-3 mx-auto">Item1</div>
-          <div class="btn btn-primary col-3 mx-auto">Item1</div>
+        <ul class="row col-4 Medium mx-auto" id="Medium">
         </ul>
-        <ul class="row col-4 Low mx-auto">
-          <div class="btn btn-primary col-3 mx-auto ">Item1</div>
-          <div class="btn btn-primary col-3 mx-auto">Item1</div>
+        <ul class="row col-4 Low mx-auto" id="Low">
         </ul>
       </div>
       <div class="progress row  bg-light justify-content-center">
