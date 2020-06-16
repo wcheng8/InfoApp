@@ -37,7 +37,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   padding-left: 10px;
 }
 .sunrise{
@@ -55,16 +55,28 @@
 .weather0{
   background-color: black;
   height: 80%;
-  width: 10%;
+  left: 40px
+}
+.weather1{
+  background-color: black;
+  height: 80%;
+  left: 60px;
 }
 .dailygenerator{
   width: 100%;
   height: 100px;
-  background-color:rgb(226, 226, 226);
 }
 
 .stocktab{
   width: 100%;
-  height: 500px;
+  /* 500 expanded */
+  height: 100px; 
   background-color: lightgray;
+}
+
+
+.stock{
+  background-color: black;
+  height: 50%;
+  left: 40px
 }
