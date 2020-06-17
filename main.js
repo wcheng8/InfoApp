@@ -31,12 +31,6 @@ async function DisplayWeatherData() {
   let sunrise = new Date(weather_data.data.sys.sunrise * 1000);
   let sunset = new Date(weather_data.data.sys.sunset * 1000);
   console.log(
-    sunrise.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-  );
-  console.log(
-    sunset.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-  );
-  console.log(
     `Currently it is ${
       weather_data.data.weather[0].description
     }. The current tempreture in ${weather_data.data.name} is ${(
@@ -44,7 +38,7 @@ async function DisplayWeatherData() {
     ).toFixed(2)}C`
   );
   console.log(`The five day forcast per day is as follow:`);
-  console.log(weather_forecast);
+  // console.log(weather_forecast);
   let fiveday_forcast_temp = [];
   let fiveday_forcast_condition = [];
   for (let i = 0; i < 40; i += 8) {
@@ -55,10 +49,33 @@ async function DisplayWeatherData() {
       weather_forecast.data.list[i].weather[0].description
     );
   }
+  document.querySelector("#sunrise").innerText = sunrise.toLocaleTimeString(
+    "en-US",
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+    }
+  );
+  document.querySelector("#sunset").innerText = sunset.toLocaleTimeString(
+    "en-US",
+    {
+      hour: "2-digit",
+      minute: "2-digit",
+    }
+  );
 
+  document.querySelector(
+    "#weather0"
+  ).innerText = `${weather_data.data.main.temp_min}C|${weather_data.data.main.temp_max}C`;
+
+  document.querySelector(
+    "#weather0img"
+  ).src = `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`;
   console.log(fiveday_forcast_condition);
   console.log(fiveday_forcast_temp);
-
+  console.log(
+    `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`
+  );
   // ICONS
   // http://openweathermap.org/img/w/${icon}.png
 }
@@ -200,3 +217,12 @@ async function DisplayQuote() {
 DisplayQuote();
 
 // Get Jokes
+
+async function DisplayJoke() {
+  const quote = await axios.get("https://api.jokes.one/jod/categories");
+  console.log(quote);
+  // document.querySelector("#quote").innerText =
+  //   quote.data.contents.quotes[0].quote;
+}
+
+DisplayJoke();
