@@ -64,6 +64,11 @@
   height: 80%;
   left: 60px;
 }
+.weatherimg{
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+}
 .dailygenerator{
   width: 100%;
   height: 100px;

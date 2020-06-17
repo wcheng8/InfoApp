@@ -27,18 +27,11 @@ async function DisplayWeatherData() {
   let weather_forecast = await axios.get(
     `http://api.openweathermap.org/data/2.5/forecast?q=${loc}&appid=${WEATHER_API_KEY}`
   );
-  console.log(weather_data);
   let sunrise = new Date(weather_data.data.sys.sunrise * 1000);
   let sunset = new Date(weather_data.data.sys.sunset * 1000);
-  console.log(
-    `Currently it is ${
-      weather_data.data.weather[0].description
-    }. The current tempreture in ${weather_data.data.name} is ${(
-      weather_data.data.main.temp - 273
-    ).toFixed(2)}C`
-  );
+
   console.log(`The five day forcast per day is as follow:`);
-  // console.log(weather_forecast);
+  console.log(weather_forecast);
   let fiveday_forcast_temp = [];
   let fiveday_forcast_condition = [];
   for (let i = 0; i < 40; i += 8) {
@@ -63,23 +56,18 @@ async function DisplayWeatherData() {
       minute: "2-digit",
     }
   );
-  document.querySelector(
-    "#weather0"
-  ).innerText = `${((weather_data.data.main.temp_min-273).toFixed(1))}C|${((weather_data.data.main.temp_max-273)).toFixed(1)}C`;
+
+  document.querySelector("#weather0main").innerText = `${(
+    weather_data.data.main.temp - 273
+  ).toFixed(1)}C`;
+  document.querySelector("#weather0").innerText = `${(
+    weather_data.data.main.temp_min - 273
+  ).toFixed(1)}C|${(weather_data.data.main.temp_max - 273).toFixed(1)}C`;
 
   let weathericon = `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`;
   document.querySelector(
     "#weather0img"
-  ).style.backgroundImage = `url(${weathericon})` ;
-  document.querySelector(
-    "#weather0img"
-  ).style.backgroundRepeat = "no-repeat"
-  document.querySelector(
-    "#weather0img"
-  ).style.backgroundSize = "contain"
-  document.querySelector(
-    "#weather0img"
-  ).style.backgroundPosition = "center bottom"
+  ).style.backgroundImage = `url(${weathericon})`;
   console.log(fiveday_forcast_condition);
   console.log(fiveday_forcast_temp);
   console.log(
