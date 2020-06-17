@@ -63,14 +63,23 @@ async function DisplayWeatherData() {
       minute: "2-digit",
     }
   );
-
   document.querySelector(
     "#weather0"
-  ).innerText = `${weather_data.data.main.temp_min}C|${weather_data.data.main.temp_max}C`;
+  ).innerText = `${((weather_data.data.main.temp_min-273).toFixed(1))}C|${((weather_data.data.main.temp_max-273)).toFixed(1)}C`;
 
+  let weathericon = `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`;
   document.querySelector(
     "#weather0img"
-  ).src = `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`;
+  ).style.backgroundImage = `url(${weathericon})` ;
+  document.querySelector(
+    "#weather0img"
+  ).style.backgroundRepeat = "no-repeat"
+  document.querySelector(
+    "#weather0img"
+  ).style.backgroundSize = "contain"
+  document.querySelector(
+    "#weather0img"
+  ).style.backgroundPosition = "center bottom"
   console.log(fiveday_forcast_condition);
   console.log(fiveday_forcast_temp);
   console.log(
