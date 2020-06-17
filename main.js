@@ -16,6 +16,8 @@ let loc = "Sydney";
 console.log(`Date: ${mm}/${dd}/${yy}`);
 console.log(`The time is ${hh}:${min}`);
 
+document.querySelector("#time").innerText = `${hh}:${min}`;
+
 // Get Weather Data
 
 async function DisplayWeatherData() {
@@ -185,5 +187,16 @@ async function DisplayUSStockData() {
 }
 DisplayWeatherData();
 DisplayUSStockData();
+
+// Get Inspiring quote
+
+async function DisplayQuote() {
+  const quote = await axios.get("http://quotes.rest/qod.json?category=inspire");
+  console.log(quote);
+  document.querySelector("#quote").innerText =
+    quote.data.contents.quotes[0].quote;
+}
+
+DisplayQuote();
 
 // Get Jokes
