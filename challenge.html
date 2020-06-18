@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+   	<head>
+  		<meta charset="utf-8"/>
+   		<title>Book List</title>
+  	</head>
+   	<body>
+		<script>
+			let books = [
+      			{
+					title: 'The Design of EveryDay Things',
+          author: 'Don Norman',
+          img: "https://i.picsum.photos/id/225/200/200.jpg?hmac=52EiCj00RHCtvmOTzd1OIWV0prXw1EISWtV8iI65NL4",
+					alreadyRead: false
+      			}, {
+					title: 'The Most Human Human',
+          author: 'Brian Christian',
+          img: "https://i.picsum.photos/id/500/200/200.jpg?hmac=YM_kCxc6fpX7ohYhMuMZ-oh5KlS16ixgqqD8kfLS7-g",
+					alreadyRead: true
+					}
+				];
+      let ul = document.createElement('ol')
+			books.forEach((e)=>{
+        let newBook = document.createElement("li")
+        let newBookPic = document.createElement("div")
+        newBookPic.style.height = "200px"
+        newBookPic.style.width = "150px"
+        newBookPic.style.backgroundImage = `url(${e.img})`
+				let newBookElement = document.createElement("p")
+				newBookElement.innerText = `Title: ${e.title}\nAuthor: ${e.author}\nHas been read?: ${e.alreadyRead}`
+        if (e.alreadyRead){
+          newBook.style.backgroundColor = "green"
+        }else{
+          newBook.style.backgroundColor = "red"
+        }
+        newBook.appendChild(newBookPic)
+        newBook.appendChild(newBookElement)
+				ul.appendChild(newBook)
+      })
+      document.body.appendChild(ul)
+		</script>
+	</body>
+</html>

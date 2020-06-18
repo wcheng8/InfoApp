@@ -34,13 +34,21 @@ async function DisplayWeatherData() {
   console.log(weather_forecast);
   let fiveday_forcast_temp = [];
   let fiveday_forcast_condition = [];
+  let fiveday_forcast_icon = [];
+  let fiveday_forcast_minmax = [];
   for (let i = 0; i < 40; i += 8) {
     fiveday_forcast_temp.push(
-      (weather_forecast.data.list[i].main.temp - 273).toFixed(2)
+      (weather_forecast.data.list[i].main.temp - 273).toFixed(1)
     );
     fiveday_forcast_condition.push(
       weather_forecast.data.list[i].weather[0].description
     );
+    fiveday_forcast_icon.push(
+      weather_forecast.data.list[i].weather[0].icon
+    )
+    fiveday_forcast_minmax.push(
+      [`${(weather_forecast.data.list[i].main.temp_min - 273).toFixed(1)}C | ${(weather_forecast.data.list[i].main.temp_max - 273).toFixed(1)}C`]
+    )
   }
   document.querySelector("#sunrise").innerText = sunrise.toLocaleTimeString(
     "en-US",
@@ -56,25 +64,42 @@ async function DisplayWeatherData() {
       minute: "2-digit",
     }
   );
-
+  let weathertab = document.querySelector("#weathertab")
+  
   document.querySelector("#weather0main").innerText = `${(
     weather_data.data.main.temp - 273
   ).toFixed(1)}C`;
-  document.querySelector("#weather0").innerText = `${(
+  document.querySelector("#weather0txt").innerText = `${(
     weather_data.data.main.temp_min - 273
   ).toFixed(1)}C|${(weather_data.data.main.temp_max - 273).toFixed(1)}C`;
-
   let weathericon = `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`;
   document.querySelector(
     "#weather0img"
   ).style.backgroundImage = `url(${weathericon})`;
+  for(let i = 0;i<5;i++){
+    let weather = document.createElement("div")
+    let weathericon = `http://openweathermap.org/img/w/${fiveday_forcast_icon[i]}.png`;
+    let weatherimg = document.createElement("div")
+      weatherimg.style.backgroundImage = `url(${weathericon})`
+    let weathermain = document.createElement("div")
+      weathermain.innerText = fiveday_forcast_temp[i]
+    let weathertxt = document.createElement("div")
+      weathertxt.innerText = `${fiveday_forcast_minmax[i]}` 
+    weather.appendChild(weatherimg)
+    weather.appendChild(weathermain)
+    weather.appendChild(weathertxt)
+    weatherimg.classList.add("weatherimg", "pt-5", "pb-4", "w-100" ,"h-70")
+    weathermain.classList.add("d-flex", "justify-content-center")
+    weathertxt.classList.add("d-flex","justify-content-center")
+    weather.classList.add("weather1", "align-self-center", "offset-1", "col-1")
+    weathertab.appendChild(weather)
+  }
+
+
   console.log(fiveday_forcast_condition);
   console.log(fiveday_forcast_temp);
-  console.log(
-    `http://openweathermap.org/img/w/${weather_data.data.weather[0].icon}.png`
-  );
-  // ICONS
-  // http://openweathermap.org/img/w/${icon}.png
+  console.log(fiveday_forcast_icon)
+  console.log(fiveday_forcast_minmax)
 }
 
 // Calculate ToDo randomize data
